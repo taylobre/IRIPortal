@@ -1,0 +1,45 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Central Identification Portal</h1>
+    <form name="searchform" method="post">
+        <div>
+            <label for="surname">Surname</label>
+            <input name="surname" type="text"/>
+
+            <label for="postcode">Postcode</label>
+            <input name="postcode" type="text" />
+
+            <label for="email">Email</label>
+            <input name="email" type="text" />
+
+
+            <label for="telephone">Phone</label>
+            <input name="telephone" type="text" />
+        </div>
+        <p><input type="submit" name="search"/></p>
+    </form>
+    <table>
+        <thead><td>Name</td><td>Town</td><td>Email</td><td>Telephone</td><td>Postcode</td><td>Type</td></thead>
+    @{
+        @foreach (IRIPortal.Pages.IndexModel.result x in (List<IRIPortal.Pages.IndexModel.result>)ViewData["results"])
+        {
+            <tr>
+           <td>@x.fullname</td>
+           <td>@x.town</td>
+           <td>@x.email</td>
+           <td>@x.telephone</td>
+                    <td>@x.postcode</td>
+                    <td>@x.persontype</td>
+                </tr>
+
+        }
+
+    }
+    </table>
+    
+</div>
